@@ -1,3 +1,5 @@
-# Ignore pycache dir
-.__pycache__/
+# Ignore pycache dir(everywhere)
+**/__pycache__/
+
+# Ignore env variables
 .env
