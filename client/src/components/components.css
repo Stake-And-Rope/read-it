@@ -45,5 +45,6 @@
 
 .form-button:hover {
     background-color: #BA5B5B;
+    color: #65451F;
     cursor: pointer;
 }
