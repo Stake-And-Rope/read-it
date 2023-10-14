@@ -26,7 +26,8 @@ function LoginRegisterPage(){
 
     return (
         <>
-			<h1 style={{position: 'fixed', top: 10, color: '#E2C799'}}>//BANNER//</h1>
+		{/* Replace this text with an actual banner */}
+			<h1 style={{position: 'fixed', top: 10, color: '#65451F'}}>//BANNER//</h1> 
     		<Routes>
 				<Route path="*" element={<h1>404 PAGE NOT FOUND</h1>}/>
     			<Route path="/register" element={<Form formType="Register"
