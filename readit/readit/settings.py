@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
 from decouple import config
+from sshtunnel import SSHTunnelForwarder
+import psycopg2
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,16 +79,47 @@ WSGI_APPLICATION = 'readit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Create SSH tunnel to the Postgres Server Host
+
+ip_address = config('IP_ADDR')
+linux_user = config('LINUX_USERNAME')
+linux_password = config('LINUX_PASSWORD')
+
+
+# tunnel = SSHTunnelForwarder(
+#         (ip_address, 22),
+#         ssh_username = linux_user,
+#         ssh_password = linux_password,
+#         remote_bind_address = ('127.0.0.1', 5432)
+#         )
+# tunnel.start()
+# db_client = psycopg2.connect(
+#     user = config('DB_USER'),
+#     password = config('DB_PASSWORD'),
+#     host = config('DB_HOST'),
+#     dbname = config('DB_NAME')
+# )
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': '192.168.0.174',
+        'PORT': config('DB_PORT'),
+    },
+    'shhtunnel_db': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD')
     }
 }
+
 
 
 # Password validation
