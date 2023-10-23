@@ -1,5 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import Form from './Form';
+import './components.css';
 
 function LoginRegisterPage(){
 	const registerFields = [
