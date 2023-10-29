@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+.input-field {
+    width: 100%;
+    height: 40px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: #F2ECBE;
+    color: #65451F;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+    text-indent: 10px;
+}
+
+.input-field:focus {
+    outline: #D2B7A9 1px solid;
+}
+
+.input-field::placeholder {
+    color: #D09271;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+}
+
+.form-title {
+    margin: 0px 0px 0px 10px;
+    color: #65451F;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+}
+
+.form-button {
+    width: 100%;
+    height: 40px;
+    margin: 5px;
+    border-radius: 10px;
+    border: 0px;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+    background-color: #9A3B3B;
+    color: #D09271;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #BA5B5B;
+    color: 65451F;
+    cursor: pointer;
+}
+
+.label_text_newacc {
+    color: #65451F;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+}
+
+.link_new_acc {
+    color: #653902;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+}
+
+.link_new_acc:hover {
+    color: #d37603;
+}
