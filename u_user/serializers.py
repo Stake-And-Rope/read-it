@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from u_user.models import User
+from u_user.models import NewUser
 
 class UserSerializer(serializers.ModelSerializer):
     # first_name = serializers.CharField(max_length = 50)
@@ -20,5 +20,5 @@ class UserSerializer(serializers.ModelSerializer):
     #     return user
 
     class Meta:
-        model = User
+        model = NewUser
         fields = '__all__'
