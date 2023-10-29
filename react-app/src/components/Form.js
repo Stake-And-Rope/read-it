@@ -38,11 +38,11 @@ function Form({
                 </div>
             </form>
 
-            <label>
+            <label className="label_text_newacc">
                 {labelText}
             </label>
             {' '}
-            <Link to={goToLink}>
+            <Link to={goToLink} class="link_new_acc">
                 {linkText}
             </Link>
         </>
