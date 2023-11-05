@@ -1,6 +1,10 @@
 import {Routes, Route} from 'react-router-dom';
 import Form from './Form';
 import './components.css';
+import DisplayUsers from './DisplayUsers';
+
+
+const BASE_URL = "http://127.0.0.1:8000/test"
 
 function LoginRegisterPage(){
 	const registerFields = [
@@ -12,22 +16,32 @@ function LoginRegisterPage(){
         "confirm password",
     ];
 
-	const onRegisterSubmit = (fields, formData) => {fields.map((field) =>{
-		console.log(formData.get(field));
-	})} // change when logic is created
+	const onRegisterSubmit = (fields, formData) => {
+		const new_user = {}
+		fields.map(field => {new_user[field] = formData.get(field)})
+
+		fetch(`${BASE_URL}/create_new_user`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(new_user)
+		})
+	} // change when logic is created
 
 	const loginFields = [
         "email or username",
         "password"
     ];
 
-	const onLoginSubmit = (fields, formData) => {{fields.map((field) =>{
+	const onLoginSubmit = (fields, formData) => {
+		fields.map((field) =>{
 		console.log(formData.get(field));
-	})}} // change when logic is created
+	})} // change when logic is created
 
     return (
         <>
-			<h1 style={{position: 'fixed', top: 10, color: '#E2C799'}}>//BANNER//</h1>
+			<h1 style={{position: 'fixed', top: 10, color: '#E2C799'}}>BANNER</h1>
     		<Routes>
 				<Route path="*" element={<h1>404 PAGE NOT FOUND</h1>}/>
     			<Route path="/register" element={<Form formType="Register"
@@ -44,6 +58,7 @@ function LoginRegisterPage(){
                                                     logicSubmitFunc={onLoginSubmit}
 													goToLink="/register"
 													linkText="Create one"/>}/>
+				<Route path="/users" element={<DisplayUsers/>}/>
 
 			</Routes>
     	</>
