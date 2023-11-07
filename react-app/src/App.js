@@ -8,13 +8,15 @@ function App() {
 
 	useEffect( () => {
 		navigate('/register')
-	}, [navigate])
+	}, [])
 
 	return (<>
     	<LoginRegisterPage />
-		<Link to={"users"} class="link_new_acc">
-                view_users
-        </Link>
+		<p>
+			<Link to={"/users"} class="link_new_acc">
+					view_users
+			</Link>
+		</p>
 		</>
 	);
 }

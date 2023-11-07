@@ -20,14 +20,16 @@ function LoginRegisterPage(){
 		const new_user = {}
 		fields.map(field => {new_user[field] = formData.get(field)})
 
-		fetch(`${BASE_URL}/create_new_user`, {
+		const response = fetch(`${BASE_URL}/create_new_user`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(new_user)
 		})
-	} // change when logic is created
+
+		console.log(response) // check result from the fetch(...)
+	}
 
 	const loginFields = [
         "email or username",
@@ -41,7 +43,7 @@ function LoginRegisterPage(){
 
     return (
         <>
-			<h1 style={{position: 'fixed', top: 10, color: '#E2C799'}}>BANNER</h1>
+			{/* BANNER */}
     		<Routes>
 				<Route path="*" element={<h1>404 PAGE NOT FOUND</h1>}/>
     			<Route path="/register" element={<Form formType="Register"

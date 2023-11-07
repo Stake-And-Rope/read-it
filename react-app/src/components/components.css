@@ -65,5 +65,7 @@
 
 .user {
     font-size: 40px;
-    text-align: center;
+    text-align: left;
+    list-style-type: none;
+    color: #65451F;
 }
