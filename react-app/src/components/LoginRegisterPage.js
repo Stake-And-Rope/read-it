@@ -3,8 +3,7 @@ import Form from './Form';
 import './components.css';
 import DisplayUsers from './DisplayUsers';
 
-
-const BASE_URL = "http://127.0.0.1:8000/test"
+const BASE_URL = "http://127.0.0.1:8000"
 
 function LoginRegisterPage(){
 	const navigate = useNavigate();
@@ -41,17 +40,12 @@ function LoginRegisterPage(){
 			},
 			body: JSON.stringify(new_user)
 		})
-
-		const created_user = await response.json()
 		
-		const firstNameMatch = created_user.first_name === new_user["first name"]
-		const lastNameMatch = created_user.last_name === new_user["last name"]
-		const emailMatch = created_user.email === new_user["email"]
+		const data = response.json()
 
-		if (firstNameMatch && lastNameMatch && emailMatch)
-			navigate('/registered')
-		else
-			navigate('/register-error')
+		console.log(data)
+
+		navigate("/registered")
 	}
 
 	const loginFields = [
@@ -60,9 +54,8 @@ function LoginRegisterPage(){
     ];
 
 	const onLoginSubmit = (fields, formData) => {
-		fields.map((field) =>{
-		console.log(formData.get(field));
-	})} // change when logic is created
+		console.log(fields, formData)
+	} // change when logic is created
 
     return (
         <>
@@ -86,7 +79,6 @@ function LoginRegisterPage(){
 													goToLink="/register"
 													linkText="Create one"/>}/>
 				<Route path="/users" element={<DisplayUsers/>}/>
-
 			</Routes>
     	</>
     );

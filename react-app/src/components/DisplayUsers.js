@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-const BASE_URL = "http://127.0.0.1:8000/test/some_users"
+const BASE_URL = "/some_users"
 
 function DisplayUsers(){
     var [users, setUsers] = useState([])

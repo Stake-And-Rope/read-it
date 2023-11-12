@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -20,13 +21,14 @@ def test_react_view(request):
 def create_new_user(request):
     data = request.data
     print(data)
-    
+
     new_user = NewUser.objects.create(
         first_name=data["first name"],
         last_name=data["last name"],
         email=data["email"],
         password=data["password"]
     )
+
 
     serializer = UserSerializer(new_user, many=False)
 
