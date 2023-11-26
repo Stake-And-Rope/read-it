@@ -3,13 +3,13 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from u_user.models import NewUser
-from u_user.serializers import UserSerializer
-
+from auth_users.models import ReadItUsers, UsersProfile
+from auth_users.serializers import UserSerializer
+from django.contrib.auth.hashers import make_password, check_password
 
 class UserRegister(APIView):
     def get(self, req):
-        users = NewUser.objects.all()
+        users = ReadItUsers.objects.all()
         serializer = UserSerializer(users, many = True)
         return Response({'users':serializer.data})
 
@@ -22,14 +22,19 @@ def create_new_user(request):
     data = request.data
     print(data)
 
-    new_user = NewUser.objects.create(
-        first_name=data["first name"],
-        last_name=data["last name"],
+    new_user = ReadItUsers.objects.create(
         email=data["email"],
-        password=data["password"]
+        password=make_password(data["password"])
+    )
+    
+    new_user_profile = UsersProfile.objects.create(
+        username = data['username'],
+        first_name = data['first name'],
+        last_name = data['last name'],
+        user = new_user
     )
 
 
-    serializer = UserSerializer(new_user, many=False)
+    serializer = UserSerializer(new_user, new_user_profile, many=False)
 
     return Response(serializer.data)

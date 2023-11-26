@@ -1,5 +1,5 @@
 from django.urls import path
-from u_user import views
+from auth_users import views
 
 urlpatterns = (
     path('register/', views.test_react_view),
