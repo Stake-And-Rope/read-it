@@ -40,12 +40,10 @@ function LoginRegisterPage(){
 			},
 			body: JSON.stringify(new_user)
 		})
-		
-		const data = response.json()
+		console.log(response)
+		console.log(response.json())
 
-		console.log(data)
-
-		navigate("/registered")
+		navigate("/registered")	
 	}
 
 	const loginFields = [

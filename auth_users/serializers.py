@@ -1,24 +1,35 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from auth_users.models import ReadItUsers
+from auth_users.models import ReadItUsers, UsersProfile
+from django.contrib.auth.hashers import make_password
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UsersProfile
+        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
-    # first_name = serializers.CharField(max_length = 50)
-    # last_name = serializers.CharField(max_length = 50)
-    # email = serializers.EmailField(
-    #         required=True,
-    #         validators=[UniqueValidator(queryset=User.objects.all())]
-    #         )
-    # username = serializers.CharField(
-    #         validators=[UniqueValidator(queryset=User.objects.all())]
-    #         )
-    # password = serializers.CharField(min_length=8)
-
-    # def create(self, validated_data):
-    #     user = User.objects.create_user(validated_data['username'], validated_data['email'],
-    #          validated_data['password'])
-    #     return user
-
+    user_profile = UserProfileSerializer(required = True, source = 'user')
+    print(user_profile)
+    
     class Meta:
         model = ReadItUsers
-        fields = '__all__'
+        fields = ('email', 'password', 'user_profile')
+        
+        
+    def create(self, validated_data):
+        print(validated_data)
+        new_user = ReadItUsers.objects.create(
+            password = make_password(validated_data["password"]),
+            email=validated_data["email"]
+        )
+        new_user_profile = UsersProfile.objects.create(
+            username = validated_data['username'],
+            first_name = validated_data['first name'],
+            last_name = validated_data['last name'],
+            user = new_user
+        )
+        
+        return new_user
+
