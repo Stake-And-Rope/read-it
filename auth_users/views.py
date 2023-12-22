@@ -16,21 +16,21 @@ class UserRegister(ListCreateAPIView):
     #     return Response({'users':serializer.data})
 
     # def post(self, req):
-    #     # data = req.data
+    #     data = req.data
     #     serializer = UserSerializer(data = req.data, many=False)
-    #     # new_user = ReadItUsers.objects.create(
-    #     #     email=data["email"],
-    #     #     password=make_password(data["password"])
-    #     # )
+    #     new_user = ReadItUsers.objects.create(
+    #         email=data["email"],
+    #         password=make_password(data["password"])
+    #     )
         
-    #     # new_user_profile = UsersProfile.objects.create(
-    #     #     username = data['username'],
-    #     #     first_name = data['first name'],
-    #     #     last_name = data['last name'],
-    #     #     user = new_user
-    #     # )
+    #     new_user_profile = UsersProfile.objects.create(
+    #         username = data['username'],
+    #         first_name = data['first name'],
+    #         last_name = data['last name'],
+    #         user = new_user
+    #     )
         
-    #     # print(serializer.__dict__)
+    #     print(serializer.__dict__)
     #     if serializer.is_valid():
     #         serializer.save()
     #         return Response(serializer.data, status = status.HTTP_201_CREATED)

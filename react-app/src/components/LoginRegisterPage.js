@@ -40,10 +40,11 @@ function LoginRegisterPage(){
 			},
 			body: JSON.stringify(new_user)
 		})
-		console.log(response)
-		console.log(response.json())
 
-		navigate("/registered")	
+		if (response.status === 201)
+			navigate("/registered")
+		else
+			navigate("/register-error")
 	}
 
 	const loginFields = [
