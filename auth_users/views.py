@@ -6,37 +6,31 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from auth_users.models import ReadItUsers, UsersProfile
-from auth_users.serializers import UserSerializer
+from auth_users.serializers import UserSerializer, UserProfileSerializer
 from django.contrib.auth.hashers import make_password, check_password
 
 class UserRegister(ListCreateAPIView):
-    # def get(self, req):
-    #     users = ReadItUsers.objects.all()
-    #     serializer = UserSerializer(users, many = True)
-    #     return Response({'users':serializer.data})
+    def get(self, req):
+        users = ReadItUsers.objects.all()
+        serializer = UserSerializer(users, many = True)
+        return Response({'users':serializer.data})
 
-    # def post(self, req):
-    #     data = req.data
-    #     serializer = UserSerializer(data = req.data, many=False)
-    #     new_user = ReadItUsers.objects.create(
-    #         email=data["email"],
-    #         password=make_password(data["password"])
-    #     )
+    def post(self, req):
+        data = req.data
+        serializer = UserProfileSerializer(data={
+            "user": data,
+            **data
+            })
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
         
-    #     new_user_profile = UsersProfile.objects.create(
-    #         username = data['username'],
-    #         first_name = data['first name'],
-    #         last_name = data['last name'],
-    #         user = new_user
-    #     )
-        
-    #     print(serializer.__dict__)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status = status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
-    queryset = ReadItUsers.objects.all()
-    serializer_class = UserSerializer
+        print(f"Errors: {serializer.errors}")
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+    # queryset = ReadItUsers.objects.all()
+    serializer_class = UserProfileSerializer
         
 
 

@@ -31,6 +31,11 @@ function LoginRegisterPage(){
 	const onRegisterSubmit = async(fields, formData) => {
 		const new_user = {}
 		fields.map(field => {new_user[field] = formData.get(field)})
+		new_user["first_name"] = new_user["first name"]
+		new_user["last_name"] = new_user["last name"]
+
+		delete new_user["first name"]
+		delete new_user["last name"]
 
 		const response = await fetch(`${BASE_URL}/create_new_user`, {
 			method: "POST",
