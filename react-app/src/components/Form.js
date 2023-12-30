@@ -42,7 +42,7 @@ function Form({
                 {labelText}
             </label>
             {' '}
-            <Link to={goToLink} class="link_new_acc">
+            <Link to={goToLink} className="link_new_acc">
                 {linkText}
             </Link>
         </>

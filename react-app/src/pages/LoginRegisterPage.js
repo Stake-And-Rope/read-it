@@ -1,7 +1,6 @@
 import {Routes, Route, useNavigate} from 'react-router-dom';
-import Form from './Form';
-import './components.css';
-import DisplayUsers from './DisplayUsers';
+import Form from '../components/Form';
+import DisplayUsers from '../components/DisplayUsers';
 
 const BASE_URL = "http://127.0.0.1:8000"
 
@@ -28,23 +27,30 @@ function LoginRegisterPage(){
 		return "";
 	  }
 
-	const onRegisterSubmit = async(fields, formData) => {
-		const new_user = {}
-		fields.map(field => {new_user[field] = formData.get(field)})
-		new_user["first_name"] = new_user["first name"]
-		new_user["last_name"] = new_user["last name"]
+	const onRegisterSubmit = async (fields, formData) => {
+		const newUser = {}
+		fields.map(field => {newUser[field] = formData.get(field)})
+		newUser["first_name"] = newUser["first name"]
+		newUser["last_name"] = newUser["last name"]
 
-		delete new_user["first name"]
-		delete new_user["last name"]
-
-		const response = await fetch(`${BASE_URL}/create_new_user`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"X-CSRFToken": getCSRFToken()
-			},
-			body: JSON.stringify(new_user)
-		})
+		delete newUser["first name"]
+		delete newUser["last name"]
+		
+		let response = null;
+		try{
+			response = await fetch(`${BASE_URL}/create_new_user`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"X-CSRFToken": getCSRFToken()
+				},
+				body: JSON.stringify(newUser)
+			})
+		}
+		catch (error){
+			console.log(error);
+			navigate("/register-error");
+		}
 
 		if (response.status === 201)
 			navigate("/registered")
@@ -53,13 +59,41 @@ function LoginRegisterPage(){
 	}
 
 	const loginFields = [
-        "email or username",
+        "email", // or username
         "password"
     ];
 
-	const onLoginSubmit = (fields, formData) => {
-		console.log(fields, formData)
-	} // change when logic is created
+	const onLoginSubmit = async (fields, formData) => {
+		const loginUser = {};
+		fields.map(field => {loginUser[field] = formData.get(field)});
+		console.log(loginUser);
+		
+		let response = null;
+		try{
+			response = await fetch(`${BASE_URL}/login_user`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"X-CSRFToken": getCSRFToken()
+				},
+				body: JSON.stringify(loginUser)
+			});
+
+			const data = await response.json();
+			console.log(data);
+		}
+		catch (error){
+			console.log(error);
+			navigate("/login-error");
+		}
+
+		console.log(response);
+
+		if (response.status === 200)
+			navigate("/login-successful");
+		else
+			navigate("/login-error");
+	}
 
     return (
         <>
@@ -68,6 +102,8 @@ function LoginRegisterPage(){
 				<Route path="*" element={<h1 style={{color: "red"}}>404 PAGE NOT FOUND</h1>}/>
 				<Route path="/registered" element={<h1 style={{color: "green"}}>REGISTERED SUCCESSFULLY!</h1>}/>
 				<Route path="/register-error" element={<h1 style={{color: "red"}}>SORRY! THERE WAS A PROBLEM WITH YOUR REGISTRATION!</h1>}/>
+				<Route path="/login-successful" element={<h1 style={{color: "green"}}>LOGED IN SUCCESSFULLY!</h1>}/>
+				<Route path="/login-error" element={<h1 style={{color: "red"}}>SORRY! THERE WAS A PROBLEM WITH LOGING YOU IN!</h1>}/>
     			<Route path="/register" element={<Form formType="Register"
 													   title="Create a brand new ReadIT account"
                                               		   fields={registerFields}

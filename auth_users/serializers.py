@@ -1,13 +1,12 @@
 from rest_framework import serializers
-from rest_framework.validators import UniqueValidator
 from auth_users.models import ReadItUsers, UsersProfile
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = ReadItUsers
         fields = '__all__'
-
 
 class UserProfileSerializer(serializers.ModelSerializer):
     user = UserSerializer()
@@ -34,3 +33,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
         
         return new_user_profile
 
+# Model Serializer always tries to upload to the db
+class LoginUserSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        email = data.get('email')
+        password = data.get('password')
+
+        user = authenticate(self.context['request'], email=email, password=password)
+
+        if not user:
+            raise serializers.ValidationError("Invalid credentials")
+
+        data['user'] = user
+        return data
