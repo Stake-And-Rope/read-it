@@ -25,16 +25,11 @@ function LoginRegisterPage(){
 		  }
 		}
 		return "";
-	  }
+	}
 
 	const onRegisterSubmit = async (fields, formData) => {
 		const newUser = {}
-		fields.map(field => {newUser[field] = formData.get(field)})
-		newUser["first_name"] = newUser["first name"]
-		newUser["last_name"] = newUser["last name"]
-
-		delete newUser["first name"]
-		delete newUser["last name"]
+		fields.map(field => {newUser[field.replace(/ /g, '_')] = formData.get(field)})
 		
 		let response = null;
 		try{
