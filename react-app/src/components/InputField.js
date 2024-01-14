@@ -2,7 +2,7 @@ import {useState} from "react";
 import Form from 'react-bootstrap/Form';
 import './components.css';
 
-function InputField({fieldName}){
+function InputField({fieldName, error}){
     const [field, setField] = useState('');
 
 
@@ -15,7 +15,7 @@ function InputField({fieldName}){
     return (
         <div>
             <Form.Control
-                className="input-field"
+                className={`input-field${error ? " error-border": ""}`}
                 type={type === "password" ? type : fieldName}
                 name={fieldName}
                 id={fieldName}

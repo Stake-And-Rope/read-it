@@ -69,3 +69,12 @@
     list-style-type: none;
     color: #65451F;
 }
+
+.error{
+    color: #DE0A26;
+    margin: 3px;
+}
+
+.error-border{
+    border: 2px solid #DE0A26;
+}
