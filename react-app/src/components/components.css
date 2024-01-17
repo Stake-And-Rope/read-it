@@ -45,7 +45,6 @@
 
 .form-button:hover {
     background-color: #BA5B5B;
-    color: 65451F;
     cursor: pointer;
 }
 
@@ -77,4 +76,62 @@
 
 .error-border{
     border: 2px solid #DE0A26;
+}
+
+nav{
+    width: 100%;
+    height: 13%;
+    position: fixed;
+    display: flex;
+    left: 0;
+    top: 0;
+    align-items: center;
+    background-color: #9A3B3B;
+}
+
+/* put more sufficient css */
+.navbar-link{
+    font-size: 30px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin: auto;
+    width: 100%;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+    background-color: #9A3B3B;
+    color: #D09271;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.navbar-link:hover {
+    background-color: #BA5B5B;
+    cursor: pointer;
+}
+
+.no-hover-navbar-link{
+    font-size: 30px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin: auto;
+    width: 100%;
+    border-radius: 5px;
+    border: 0px;
+    font-family: Merriweather, Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+    background-color: #9A3B3B;
+    color: #D09271;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.icon{
+    width: 5rem;
+    height: 5rem;
 }

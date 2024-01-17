@@ -1,10 +1,10 @@
 import './App.css';
 import { Link } from 'react-router-dom';
-import LoginRegisterPage from './pages/LoginRegisterPage';
+import LinkRouter from "./LinkRouter";
 
 function App() {
 	return (<>
-    	<LoginRegisterPage />
+    	<LinkRouter/>
 		<p>
 			<Link to={"/users"} className="link_new_acc">
 					view_users

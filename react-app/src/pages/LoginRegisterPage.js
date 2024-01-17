@@ -22,10 +22,7 @@ function LoginRegisterPage(){
     ];
 
     return (
-        <>
-			{/* BANNER */}
     		<Routes>
-				<Route path="*" element={<h1 style={{color: "red"}}>404 PAGE NOT FOUND</h1>}/>
 				<Route path="/registered" element={<h1 style={{color: "green"}}>REGISTERED SUCCESSFULLY!</h1>}/>
 				<Route path="/login-successful" element={<h1 style={{color: "green"}}>LOGED IN SUCCESSFULLY!</h1>}/>
     			<Route path="/register" element={<Form formType="Register"
@@ -44,7 +41,6 @@ function LoginRegisterPage(){
 													linkText="Create one"/>}/>
 				<Route path="/users" element={<DisplayUsers/>}/>
 			</Routes>
-    	</>
     );
 }
 
