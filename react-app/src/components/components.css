@@ -90,14 +90,14 @@ nav{
 }
 
 /* put more sufficient css */
-.navbar-link{
+.navbar-element{
     font-size: 30px;
     justify-content: center;
     display: flex;
     align-items: center;
     height: fit-content;
+    width: 90%;
     margin: auto;
-    width: 100%;
     border-radius: 5px;
     border: 0px;
     font-family: Merriweather, Arial, Helvetica, sans-serif; 
@@ -106,32 +106,28 @@ nav{
     color: #D09271;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    transition: 500ms;
 }
 
 .navbar-link:hover {
     background-color: #BA5B5B;
     cursor: pointer;
+    transition: 500ms;
 }
 
-.no-hover-navbar-link{
-    font-size: 30px;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: fit-content;
-    margin: auto;
-    width: 100%;
-    border-radius: 5px;
-    border: 0px;
-    font-family: Merriweather, Arial, Helvetica, sans-serif; 
-    font-weight: bold;
-    background-color: #9A3B3B;
-    color: #D09271;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
+.navbar-icon{
+    width: fit-content;
+    margin: 0 5rem;
 }
 
 .icon{
     width: 5rem;
     height: 5rem;
+    transition: 500ms;
+}
+
+.icon:hover{    
+    filter: drop-shadow(0 0 10px #BA5B5B);
+    cursor: pointer;
+    transition: 500ms;
 }
