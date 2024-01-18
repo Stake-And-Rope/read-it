@@ -80,7 +80,7 @@
 
 nav{
     width: 100%;
-    height: 13%;
+    height: 7%;
     position: fixed;
     display: flex;
     left: 0;
@@ -91,12 +91,12 @@ nav{
 
 /* put more sufficient css */
 .navbar-element{
-    font-size: 30px;
-    justify-content: center;
+    font-size: 20px;
     display: flex;
+    justify-content: center;
     align-items: center;
     height: fit-content;
-    width: 90%;
+    width: 100%;
     margin: auto;
     border-radius: 5px;
     border: 0px;
@@ -121,13 +121,32 @@ nav{
 }
 
 .icon{
-    width: 5rem;
-    height: 5rem;
-    transition: 500ms;
+    width: 3rem;
+    height: 3rem;
+    transition: 500ms ease;
 }
 
-.icon:hover{    
-    filter: drop-shadow(0 0 10px #BA5B5B);
+.icon:hover{ 
     cursor: pointer;
-    transition: 500ms;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+    transition: 500ms ease;
+}
+
+.left-nav-div{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    width: 50%
+}
+
+.right-nav-div{
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    right: 0;
 }
