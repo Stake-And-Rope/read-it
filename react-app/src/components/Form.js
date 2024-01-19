@@ -31,7 +31,7 @@ function Form({
         }
     
         const user = {}
-        fields.map(field => {user[field.replace(/ /g, '_')] = formData.get(field)})
+        fields.array.forEach(field => {user[field.replace(/ /g, '_')] = formData.get(field)})
         
         let response = null;
         try{
@@ -59,7 +59,7 @@ function Form({
             navigate(REGISTER_URL)
 
         let errors = {}
-        Object.entries(data).map(([field, value]) => {
+        Object.entries(data).forEach(([field, value]) => {
             if (field === "user")
                 errors = {...errors, ...value}
             else if (field === "non_field_errors")
@@ -83,7 +83,7 @@ function Form({
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} key={formType}>
                 <div>
                     <h3 className="form-title">
                         {title}
@@ -96,15 +96,15 @@ function Form({
                     {fields.map((field) =>{
                         const error = fieldErrors[field] !== undefined;
                         return (
-                            <>
+                            <div key={field + error}>
                                 <InputField fieldName={field} key={`${formType}_${field}`} error={error}/>
 
                                 {error ?
-                                    <h5 className="error">
+                                    <h5 className="error" key={`${field}-error`}>
                                         {fieldErrors[field].join(" ").replace("This", field.charAt(0).toUpperCase() + field.slice(1))}
                                     </h5> : null
                                 }
-                            </>
+                            </div>
                         );
                     })}
 

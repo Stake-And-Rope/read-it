@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Form from '../components/Form';
 import DisplayUsers from '../components/DisplayUsers';
 
