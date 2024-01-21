@@ -4,8 +4,8 @@ import MainPage from "./pages/MainPage";
 function LinkRouter(){
     return (
     <>
-        <LoginRegisterPage/>
-        <MainPage/>
+        <LoginRegisterPage />
+        <MainPage />
     </>
     );
 }

@@ -1,0 +1,50 @@
+main {
+    display: flex;
+    align-items: center;
+    padding: 1.2em 16em;
+    gap: 3em;
+    justify-content: center;
+}
+
+main .filters-box {
+    margin-left: 5%;
+    border-right: solid #9A3B3B;
+    padding-right: 3em;
+    margin-left: 0em;
+    text-align: center;
+    margin-bottom: auto;
+    margin-top: 8em;
+}
+
+main .filters-box h2 {
+    font-size: 2em;
+}
+
+main .filters-box p {
+    font-size: 1.4em;
+}
+
+.topics-box {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.topic-article {
+    background-color: #C08261;
+    margin-bottom: 2em;
+    border: solid 0.2em #9A3B3B;
+    border-radius: 0.6em;
+}
+
+.topic-title {
+    font-size: 2em;
+    margin: 0.6em 1em;
+}
+
+.topics-subtitle {
+    font-size: 1.4em;
+    margin: 0em 1.4em;
+    margin-bottom: 0.6em;
+}
