@@ -17,10 +17,14 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #E2C799;
+  font-family: "Century Gothic";
+  font-size: 12px;
 }
+
 
 h1 {
   font-size: 3.2em;

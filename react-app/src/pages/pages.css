@@ -1,7 +1,7 @@
 main {
     display: flex;
     align-items: center;
-    padding: 1.2em 16em;
+    margin: 1.2em 8em;
     gap: 3em;
     justify-content: center;
 }
@@ -29,6 +29,7 @@ main .filters-box p {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    margin-top: 8em;
 }
 
 .topic-article {
@@ -36,6 +37,7 @@ main .filters-box p {
     margin-bottom: 2em;
     border: solid 0.2em #9A3B3B;
     border-radius: 0.6em;
+    text-align: left;
 }
 
 .topic-title {
