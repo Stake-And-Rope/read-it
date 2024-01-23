@@ -93,7 +93,9 @@ nav{
 .navbar-element{
     font-size: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: nowrap;
     align-items: center;
     height: fit-content;
     width: 100%;
@@ -107,6 +109,16 @@ nav{
     transition: background-color 0.3s ease;
     text-decoration: none;
     transition: 500ms;
+
+}
+
+.navbar-link {
+    padding: 2px;
+    margin: 2px;
+    display: flex;
+    flex-wrap: nowrap;
+    orientation: auto;
+    width: 20%;
 }
 
 .navbar-link:hover {
@@ -115,9 +127,21 @@ nav{
     transition: 500ms;
 }
 
+
 .navbar-icon{
     width: fit-content;
-    margin: 0 5rem;
+    margin: 1px;
+    padding: 1px;
+}
+
+.navbar-icon.navbar-element {
+    margin: 10px;
+
+}
+
+.navbar-link.navbar-element{
+    margin: 0px;
+    padding: 0px;
 }
 
 .icon{
@@ -136,17 +160,32 @@ nav{
 
 .left-nav-div{
     display: flex;
+    gap: 4px;
     justify-content: left;
     align-items: center;
     position: fixed;
-    left: 0;
-    width: 50%
+    left: 0px;
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+
 }
 
 .right-nav-div{
     position: fixed;
     display: flex;
+    flex-wrap: nowrap;
     justify-content: right;
     align-items: center;
-    right: 0;
+    right: 0px;
+}
+
+.navbar-icon.navbar-element {
+    background: #E2C799;
+    border-radius: 30%;
+}
+
+.navbar-icon.navbar-element:hover {
+    background: #E2C799;
+    border-radius: 100%;
 }
