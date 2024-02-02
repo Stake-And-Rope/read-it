@@ -1,7 +1,7 @@
 import  NavbarLink from "./NavbarLink";
 import Logo from '../assets/placeholders/logo-icon.png';
-import Profile from '../assets/placeholders/profile-icon.png';
-import Search from "../assets/placeholders/search-icon.png";
+import Profile from '../assets/placeholders/user.png';
+import Search from "../assets/placeholders/search.png";
 import InputField from "./InputField";
 import { useState } from "react";
 
